@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pico Tetris Game Console</title>
+    <style>
+      :root {
+        --primary: #2b2d42;
+        --secondary: #8d99ae;
+        --accent: #ef233c;
+        --light: #edf2f4;
+        --dark: #1a1a2e;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--light);
+        background-color: var(--dark);
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--primary), var(--dark));
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        border-bottom: 5px solid var(--accent);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 3rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .project-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .game-display {
+        background-color: var(--primary);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--secondary);
+      }
+
+      .game-display img {
+        width: 100%;
+        border-radius: 5px;
+        border: 2px solid var(--secondary);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .feature-card {
+        background-color: var(--primary);
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid var(--accent);
+      }
+
+      .feature-card h3 {
+        color: var(--accent);
+        margin-top: 0;
+      }
+
+      .hardware-list {
+        background-color: var(--primary);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+
+      .hardware-list ul {
+        columns: 2;
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .hardware-list li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .hardware-list li:before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .code-snippet {
+        background-color: #1e1e2e;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        margin: 20px 0;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #d90429;
+        transform: translateY(-2px);
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        background-color: var(--primary);
+        border-top: 1px solid var(--secondary);
+      }
+
+      @media (max-width: 768px) {
+        .project-showcase {
+          grid-template-columns: 1fr;
+        }
+
+        .hardware-list ul {
+          columns: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Pico Tetris Game Console</h1>
+        <p class="subtitle">
+          A classic Tetris implementation for Raspberry Pi Pico with ILI9341
+          display
+        </p>
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="project-showcase">
+        <div class="game-display">
+          <h2>Game Preview</h2>
+          <!-- Replace with your actual game screenshot -->
+          <img
+            src="/Images/photo_2025-04-10_15-02-02.jpg"
+            alt="Tetris Gameplay"
+          />
+          <p>
+            Experience classic Tetris with colorful blocks and smooth gameplay
+            on your Raspberry Pi Pico.
+          </p>
+        </div>
+
+        <div class="game-display">
+          <h2>Hardware Setup</h2>
+          <!-- Replace with your actual hardware setup image -->
+          <img
+            src="/Images/photo_2025-04-10_15-01-56.jpg"
+            alt="Hardware Setup"
+          />
+          <p>
+            Compact setup with ILI9341 display and tactile buttons for full game
+            control.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Project Features</h2>
+        <div class="features">
+          <div class="feature-card">
+            <h3>Classic Gameplay</h3>
+            <p>
+              Faithful recreation of the original Tetris mechanics with all 7
+              tetromino pieces.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Colorful Display</h3>
+            <p>
+              Vibrant colored blocks using custom BMP files for each tetromino
+              type.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Background Music</h3>
+            <p>
+              Integrated melody player that plays the classic Tetris theme
+              during gameplay.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Responsive Controls</h3>
+            <p>
+              Debounced button inputs for precise piece movement and rotation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="hardware-list">
+        <h2>Hardware Components</h2>
+        <ul>
+          <li>Raspberry Pi Pico</li>
+          <li>ILI9341 TFT Display (240x320)</li>
+          <li>Tactile buttons (x4)</li>
+          <li>Breadboard and jumper wires</li>
+          <li>SPI interface for display</li>
+          <li>Digital inputs for buttons</li>
+          <li>5V power supply</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Technical Implementation</h2>
+        <p>
+          The game is built using CircuitPython with displayio for graphics
+          rendering. Key components include:
+        </p>
+
+        <div class="code-snippet">
+          <h3>Display Initialization</h3>
+          <pre><code># Initialize SPI
+spi = busio.SPI(clock=clk_pin, MOSI=mosi_pin)
+
+# Initialize the display bus
+display_bus = displayio.FourWire(spi, command=dc_pin, chip_select=cs_pin, reset=reset_pin)
+
+# Initialize the ILI9341 display (rotation set to 90 for vertical orientation)
+display = adafruit_ili9341.ILI9341(display_bus, width=240, height=320, rotation=90)</code></pre>
+        </div>
+
+        <div class="code-snippet">
+          <h3>Game Loop</h3>
+          <pre><code>async def tetris_game():
+    while True:
+        # Handle controls
+        if debouncer_left.debounced_press():
+            move_piece_left()
+            
+        # Game logic
+        if not move_piece_down():
+            place_piece()
+            clear_lines()
+            spawn_new_piece()
+            
+        await asyncio.sleep(0.2)</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Project Files</h2>
+        <p>The project consists of several key files:</p>
+        <ul>
+          <li><code>code.py</code> - Main game logic and display handling</li>
+          <li><code>melody.py</code> - Music player for the Tetris theme</li>
+          <li>
+            <code>block_&lt;color&gt;.bmp</code> - Colored block images for each
+            tetromino
+          </li>
+        </ul>
+
+        <a href="#" class="btn">View on GitHub</a>
+        <a href="#" class="btn">Download Project Files</a>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>
+          © 2023 Pico Tetris Game Console Project | Created with CircuitPython
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
